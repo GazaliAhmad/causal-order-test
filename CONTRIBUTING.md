@@ -16,5 +16,6 @@ npm run ci
 ## Publishing Expectations
 
 - CI should pass on the default branch before publishing.
-- npm publishing is handled through the GitHub Actions publish workflow.
+- Do the first npm publish manually so the package name and access settings are confirmed once end to end.
+- After the first successful manual publish, npm publishing can be handled through the GitHub Actions publish workflow.
 - The GitHub repo should define an `NPM_TOKEN` secret with publish access to `@causal-order/testing`.

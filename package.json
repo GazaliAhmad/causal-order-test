@@ -23,15 +23,16 @@
     }
   },
   "bin": {
-    "causal-order-testing-runtime": "./.build/src/deployment-runtime.js",
-    "causal-order-testing-runtime-rejoin": "./.build/src/deployment-runtime-rejoin.js",
-    "causal-order-testing-summary": "./.build/src/summarize-run.js",
-    "causal-order-testing-compare": "./.build/src/compare-runs.js",
-    "causal-order-testing-duplicates": "./.build/src/duplicate-leak-summary.js",
-    "causal-order-testing-latest": "./.build/src/latest-summary.js"
+    "causal-order-testing-runtime": "bin/causal-order-testing-runtime.js",
+    "causal-order-testing-runtime-rejoin": "bin/causal-order-testing-runtime-rejoin.js",
+    "causal-order-testing-summary": "bin/causal-order-testing-summary.js",
+    "causal-order-testing-compare": "bin/causal-order-testing-compare.js",
+    "causal-order-testing-duplicates": "bin/causal-order-testing-duplicates.js",
+    "causal-order-testing-latest": "bin/causal-order-testing-latest.js"
   },
   "files": [
     ".build/",
+    "bin/",
     "profiles/",
     "README.md",
     "CHANGELOG.md",
@@ -49,14 +50,23 @@
     "simulation",
     "chaos-engineering",
     "fault-injection",
-    "event-streams"
+    "event-streams",
+    "distributed-systems",
+    "event-ordering",
+    "runtime-harness",
+    "recovery-testing",
+    "rejoin-testing",
+    "topology-testing"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "check": "tsc -p tsconfig.json --noEmit",
-    "ci": "npm run check && npm run build && npm run pack:check",
+    "test:smoke": "npm run build && node scripts/smoke.mjs",
+    "ci": "npm run check && npm run test:smoke && npm run pack:check",
     "prepack": "npm run build",
     "pack:check": "npm pack --dry-run",
+    "publish:dry-run": "npm publish --dry-run --access public",
+    "release:check": "npm run ci && npm run publish:dry-run",
     "runtime": "npm run build && node .build/src/deployment-runtime.js",
     "runtime:rejoin": "npm run build && node .build/src/deployment-runtime-rejoin.js",
     "summary:latest": "npm run build && node .build/src/latest-summary.js",
