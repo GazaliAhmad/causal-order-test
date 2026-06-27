@@ -1,0 +1,53 @@
+{
+  "name": "break-the-wire",
+  "description": "Asymmetric partition stress test. Isolates edge-c with extreme transit stalls.",
+  "nodeWeights": {
+    "edge-a": 1.0,
+    "edge-b": 1.0,
+    "edge-c": 1.0
+  },
+  "phaseRates": {
+    "steadyEventsPerSecond": 18,
+    "chaosMultiplier": 2.0,
+    "chaosJitterMin": 0.95,
+    "chaosJitterMax": 1.15
+  },
+  "dependencies": {
+    "steadySameNodeChance": 0.10,
+    "steadyCrossNodeChance": 0.70,
+    "chaoticSameNodeChance": 0.05,
+    "chaoticCrossNodeChance": 0.85,
+    "sameNodeParentChance": 0.20,
+    "crossNodeParentChance": 0.95
+  },
+  "duplicates": {
+    "steadyChance": 0.002,
+    "chaoticChance": 0.02
+  },
+  "ordering": {
+    "steadyPreserveOrderChance": 0.995,
+    "chaoticPreserveOrderChance": 0.70
+  },
+  "delays": {
+    "steady": {
+      "baseMinMs": 15,
+      "baseMaxMs": 90,
+      "spikeChance": 0.02,
+      "spikeMinMs": 180,
+      "spikeMaxMs": 700
+    },
+    "chaotic": {
+      "baseMinMs": 40,
+      "baseMaxMs": 200,
+      "slowSpikeChance": 0.25,
+      "slowSpikeMinMs": 5000,
+      "slowSpikeMaxMs": 15000,
+      "lateSpikeChance": 0.15,
+      "lateSpikeMinMs": 30000,
+      "lateSpikeMaxMs": 120000,
+      "extremeSpikeChance": 0.08,
+      "extremeSpikeMinMs": 180000,
+      "extremeSpikeMaxMs": 240000
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "expected-production",
+  "description": "Example production-like profile. Edit these values to match your expected server workload.",
+  "nodeWeights": {
+    "edge-a": 1.2,
+    "edge-b": 0.8
+  },
+  "phaseRates": {
+    "steadyEventsPerSecond": 12,
+    "chaosMultiplier": 1.6,
+    "chaosJitterMin": 0.95,
+    "chaosJitterMax": 1.15
+  },
+  "dependencies": {
+    "steadySameNodeChance": 0.44,
+    "steadyCrossNodeChance": 0.18,
+    "chaoticSameNodeChance": 0.24,
+    "chaoticCrossNodeChance": 0.34,
+    "sameNodeParentChance": 0.82,
+    "crossNodeParentChance": 0.72
+  },
+  "duplicates": {
+    "steadyChance": 0.001,
+    "chaoticChance": 0.008
+  },
+  "ordering": {
+    "steadyPreserveOrderChance": 0.995,
+    "chaoticPreserveOrderChance": 0.92
+  },
+  "delays": {
+    "steady": {
+      "baseMinMs": 15,
+      "baseMaxMs": 90,
+      "spikeChance": 0.02,
+      "spikeMinMs": 180,
+      "spikeMaxMs": 700
+    },
+    "chaotic": {
+      "baseMinMs": 30,
+      "baseMaxMs": 180,
+      "slowSpikeChance": 0.06,
+      "slowSpikeMinMs": 800,
+      "slowSpikeMaxMs": 4000,
+      "lateSpikeChance": 0.01,
+      "lateSpikeMinMs": 6000,
+      "lateSpikeMaxMs": 20000,
+      "extremeSpikeChance": 0.002,
+      "extremeSpikeMinMs": 30000,
+      "extremeSpikeMaxMs": 90000
+    }
+  }
+}

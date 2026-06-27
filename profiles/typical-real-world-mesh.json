@@ -1,0 +1,53 @@
+{
+  "name": "typical-real-world-mesh",
+  "description": "Ordinary production-like mesh with slight hotspotting, moderate cross-node coordination, low retry noise, and short latency spikes rather than hostile stalls.",
+  "nodeWeights": {
+    "edge-a": 1.25,
+    "edge-b": 1.1,
+    "edge-c": 0.95
+  },
+  "phaseRates": {
+    "steadyEventsPerSecond": 14,
+    "chaosMultiplier": 1.35,
+    "chaosJitterMin": 0.96,
+    "chaosJitterMax": 1.08
+  },
+  "dependencies": {
+    "steadySameNodeChance": 0.32,
+    "steadyCrossNodeChance": 0.34,
+    "chaoticSameNodeChance": 0.18,
+    "chaoticCrossNodeChance": 0.48,
+    "sameNodeParentChance": 0.68,
+    "crossNodeParentChance": 0.76
+  },
+  "duplicates": {
+    "steadyChance": 0.0008,
+    "chaoticChance": 0.004
+  },
+  "ordering": {
+    "steadyPreserveOrderChance": 0.998,
+    "chaoticPreserveOrderChance": 0.96
+  },
+  "delays": {
+    "steady": {
+      "baseMinMs": 10,
+      "baseMaxMs": 60,
+      "spikeChance": 0.01,
+      "spikeMinMs": 100,
+      "spikeMaxMs": 300
+    },
+    "chaotic": {
+      "baseMinMs": 20,
+      "baseMaxMs": 120,
+      "slowSpikeChance": 0.035,
+      "slowSpikeMinMs": 500,
+      "slowSpikeMaxMs": 2500,
+      "lateSpikeChance": 0.004,
+      "lateSpikeMinMs": 3000,
+      "lateSpikeMaxMs": 12000,
+      "extremeSpikeChance": 0.0005,
+      "extremeSpikeMinMs": 20000,
+      "extremeSpikeMaxMs": 45000
+    }
+  }
+}

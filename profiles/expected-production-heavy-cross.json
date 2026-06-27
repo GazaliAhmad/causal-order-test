@@ -1,0 +1,52 @@
+{
+  "name": "expected-production-heavy-cross",
+  "description": "Production profile modified to force max cross-node dependency vectors.",
+  "nodeWeights": {
+    "edge-a": 1.2,
+    "edge-b": 0.8
+  },
+  "phaseRates": {
+    "steadyEventsPerSecond": 12,
+    "chaosMultiplier": 1.6,
+    "chaosJitterMin": 0.95,
+    "chaosJitterMax": 1.15
+  },
+  "dependencies": {
+    "steadySameNodeChance": 0.10,
+    "steadyCrossNodeChance": 0.70,
+    "chaoticSameNodeChance": 0.05,
+    "chaoticCrossNodeChance": 0.85,
+    "sameNodeParentChance": 0.20,
+    "crossNodeParentChance": 0.95
+  },
+  "duplicates": {
+    "steadyChance": 0.001,
+    "chaoticChance": 0.008
+  },
+  "ordering": {
+    "steadyPreserveOrderChance": 0.995,
+    "chaoticPreserveOrderChance": 0.92
+  },
+  "delays": {
+    "steady": {
+      "baseMinMs": 15,
+      "baseMaxMs": 90,
+      "spikeChance": 0.02,
+      "spikeMinMs": 180,
+      "spikeMaxMs": 700
+    },
+    "chaotic": {
+      "baseMinMs": 30,
+      "baseMaxMs": 180,
+      "slowSpikeChance": 0.06,
+      "slowSpikeMinMs": 800,
+      "slowSpikeMaxMs": 4000,
+      "lateSpikeChance": 0.01,
+      "lateSpikeMinMs": 6000,
+      "lateSpikeMaxMs": 20000,
+      "extremeSpikeChance": 0.002,
+      "extremeSpikeMinMs": 30000,
+      "extremeSpikeMaxMs": 90000
+    }
+  }
+}

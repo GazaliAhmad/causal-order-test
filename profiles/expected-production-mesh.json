@@ -1,0 +1,53 @@
+{
+  "name": "expected-production-mesh",
+  "description": "Production-like mesh workload profile for single-cluster topology validation.",
+  "nodeWeights": {
+    "edge-a": 1.0,
+    "edge-b": 1.0,
+    "edge-c": 1.0
+  },
+  "phaseRates": {
+    "steadyEventsPerSecond": 18,
+    "chaosMultiplier": 1.6,
+    "chaosJitterMin": 0.95,
+    "chaosJitterMax": 1.15
+  },
+  "dependencies": {
+    "steadySameNodeChance": 0.20,
+    "steadyCrossNodeChance": 0.60,
+    "chaoticSameNodeChance": 0.10,
+    "chaoticCrossNodeChance": 0.80,
+    "sameNodeParentChance": 0.30,
+    "crossNodeParentChance": 0.85
+  },
+  "duplicates": {
+    "steadyChance": 0.001,
+    "chaoticChance": 0.008
+  },
+  "ordering": {
+    "steadyPreserveOrderChance": 0.995,
+    "chaoticPreserveOrderChance": 0.92
+  },
+  "delays": {
+    "steady": {
+      "baseMinMs": 15,
+      "baseMaxMs": 90,
+      "spikeChance": 0.02,
+      "spikeMinMs": 180,
+      "spikeMaxMs": 700
+    },
+    "chaotic": {
+      "baseMinMs": 30,
+      "baseMaxMs": 180,
+      "slowSpikeChance": 0.06,
+      "slowSpikeMinMs": 800,
+      "slowSpikeMaxMs": 4000,
+      "lateSpikeChance": 0.01,
+      "lateSpikeMinMs": 6000,
+      "lateSpikeMaxMs": 20000,
+      "extremeSpikeChance": 0.002,
+      "extremeSpikeMinMs": 30000,
+      "extremeSpikeMaxMs": 90000
+    }
+  }
+}

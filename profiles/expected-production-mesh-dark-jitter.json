@@ -1,0 +1,53 @@
+{
+  "name": "expected-production-mesh-dark-jitter",
+  "description": "Production-like mesh workload with intermittent dark-node recovery bursts and a small set of jitter-prone links.",
+  "nodeWeights": {
+    "edge-a": 1.0,
+    "edge-b": 1.0,
+    "edge-c": 1.0
+  },
+  "phaseRates": {
+    "steadyEventsPerSecond": 18,
+    "chaosMultiplier": 1.9,
+    "chaosJitterMin": 0.8,
+    "chaosJitterMax": 1.3
+  },
+  "dependencies": {
+    "steadySameNodeChance": 0.18,
+    "steadyCrossNodeChance": 0.58,
+    "chaoticSameNodeChance": 0.08,
+    "chaoticCrossNodeChance": 0.78,
+    "sameNodeParentChance": 0.3,
+    "crossNodeParentChance": 0.9
+  },
+  "duplicates": {
+    "steadyChance": 0.002,
+    "chaoticChance": 0.014
+  },
+  "ordering": {
+    "steadyPreserveOrderChance": 0.99,
+    "chaoticPreserveOrderChance": 0.82
+  },
+  "delays": {
+    "steady": {
+      "baseMinMs": 15,
+      "baseMaxMs": 100,
+      "spikeChance": 0.03,
+      "spikeMinMs": 250,
+      "spikeMaxMs": 900
+    },
+    "chaotic": {
+      "baseMinMs": 40,
+      "baseMaxMs": 220,
+      "slowSpikeChance": 0.14,
+      "slowSpikeMinMs": 3000,
+      "slowSpikeMaxMs": 12000,
+      "lateSpikeChance": 0.06,
+      "lateSpikeMinMs": 20000,
+      "lateSpikeMaxMs": 90000,
+      "extremeSpikeChance": 0.02,
+      "extremeSpikeMinMs": 90000,
+      "extremeSpikeMaxMs": 210000
+    }
+  }
+}

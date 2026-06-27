@@ -1,0 +1,75 @@
+{
+  "name": "@causal-order/testing",
+  "version": "0.1.0",
+  "description": "Deterministic deployment-style runtime harness and fault-injection toolkit for causal-order pipelines.",
+  "author": "Gazali Ahmad",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GazaliAhmad/causal-order-testing.git"
+  },
+  "homepage": "https://github.com/GazaliAhmad/causal-order-testing#readme",
+  "bugs": {
+    "url": "https://github.com/GazaliAhmad/causal-order-testing/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "./.build/src/index.js",
+  "types": "./.build/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./.build/src/index.d.ts",
+      "import": "./.build/src/index.js"
+    }
+  },
+  "bin": {
+    "causal-order-testing-runtime": "./.build/src/deployment-runtime.js",
+    "causal-order-testing-runtime-rejoin": "./.build/src/deployment-runtime-rejoin.js",
+    "causal-order-testing-summary": "./.build/src/summarize-run.js",
+    "causal-order-testing-compare": "./.build/src/compare-runs.js",
+    "causal-order-testing-duplicates": "./.build/src/duplicate-leak-summary.js",
+    "causal-order-testing-latest": "./.build/src/latest-summary.js"
+  },
+  "files": [
+    ".build/",
+    "profiles/",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "causal-order",
+    "testing",
+    "simulation",
+    "chaos-engineering",
+    "fault-injection",
+    "event-streams"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "ci": "npm run check && npm run build && npm run pack:check",
+    "prepack": "npm run build",
+    "pack:check": "npm pack --dry-run",
+    "runtime": "npm run build && node .build/src/deployment-runtime.js",
+    "runtime:rejoin": "npm run build && node .build/src/deployment-runtime-rejoin.js",
+    "summary:latest": "npm run build && node .build/src/latest-summary.js",
+    "summary:report": "npm run build && node .build/src/summarize-run.js",
+    "summary:duplicates": "npm run build && node .build/src/duplicate-leak-summary.js",
+    "summary:compare": "npm run build && node .build/src/compare-runs.js"
+  },
+  "dependencies": {
+    "@causal-order/dedupe": "^1.1.1",
+    "causal-order": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "typescript": "^6.0.3"
+  }
+}
